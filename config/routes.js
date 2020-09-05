@@ -35,4 +35,5 @@ module.exports.routes = {
 
   'post /api/users/register': 'UserController.register',
   'post /api/users/login': 'UserController.login',
+  'post /api/offers/search/:sortBy?': 'OfferController.search'
 };
