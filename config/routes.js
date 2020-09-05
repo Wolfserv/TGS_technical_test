@@ -34,4 +34,5 @@ module.exports.routes = {
   ***************************************************************************/
 
   'post /api/users/register': 'UserController.register',
+  'post /api/users/login': 'UserController.login',
 };
