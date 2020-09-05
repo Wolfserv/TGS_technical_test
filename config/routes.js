@@ -33,5 +33,5 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-
+  'post /api/users/register': 'UserController.register',
 };
