@@ -61,7 +61,7 @@ module.exports = {
       let sort = ''
       if (req.params.sortBy) {
         let s = req.params.sortBy.split('=')[1]
-        sort = (s=== 'price' || s === 'arrivalTime') ? {
+        sort = (s === 'price' || s === 'arrivalTime') ? {
           key: s,
           by: "asc"
         } : {};
