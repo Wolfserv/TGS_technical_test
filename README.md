@@ -1,26 +1,95 @@
 # tgs-technical-test
 
-a [Sails v1](https://sailsjs.com) application
+
+# API Documentation
+
+## POST /api/users/register
+
+**Body:**
+```
+    {
+      firstName: 'string',             *required*
+      lastName: 'string',              *required*
+      email: 'string',                 *required*
+      birthDate: 'string',             *required*
+      phoneNumber: 'string',           *required*
+      country: 'string',               *required*
+      isVerifiedPhoneNumber: 'boolean' *required*
+    }
+```
+**Response:**
+```
+  {
+    message: 'string',
+    token: 'string'  // only if user registered a new account
+  }
+```
 
 
-### Links
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
+## POST /api/users/login
+
+**Body:**
+```
+  {
+    email: 'string',      *required*
+    phoneNumber: 'string' *required*
+  }
+```
+**Response:**
+```
+  {
+    message: 'string,
+    token: 'string' // only if user logged in
+  }
+```
+
+## POST /api/offers/search/:sortBy?
+*/api/offers/search*
+OR
+*/api/offers/search/sortBy=*
+
+**Headers:**
+```
+  {
+     Authorization: 'string', *required* // 'Bearer ' + token obtained with login/register endpoint
+  }
+```
+
+**Params:**
+```
+  {
+    sortBy: 'string' *optional* // 'price' or 'arrivalTime'
+  }
+```
+Use this optional parameter to sort JSON by increasing price or increasing  arrival time.
+
+**Body:**
+```
+  {
+    startAddress: 'string', *required* // number + ' ' + street + ", " + city (example: 47 Quai d'Austerlitz, Paris)
+    endAddress: 'string'    *required*
+  }
+```
+
+**Response:**
+```
+  {
+    statusCode: 'string',
+      body: [
+        {
+          offerId: 'string',
+          providerCode: 'string',
+          category: 'string',
+          price: 'number',
+          currency: 'string',
+          internalDeepLinkUrl: 'boolean'
+        }
+      ]
+  }
+```
 
 
 ### Version info
 
 This app was originally generated on Sat Sep 05 2020 05:37:34 GMT-0400 (Eastern Daylight Time) using Sails v1.3.0.
-
-<!-- Internally, Sails used [`sails-generate@2.0.0`](https://github.com/balderdashy/sails-generate/tree/v2.0.0/lib/core-generators/new). -->
-
-
-
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
-
