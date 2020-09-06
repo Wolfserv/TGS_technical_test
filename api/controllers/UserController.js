@@ -74,7 +74,10 @@ module.exports = {
         if (body.statusCode === 500) {
           res.status(401).send({message: "Account not found."});
         } else {
-          res.status(200).send(body);
+          res.status(200).send({
+            message: 'Logged succesfully.',
+            token: body.token
+          });
         }
       }
     });
