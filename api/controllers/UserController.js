@@ -76,7 +76,7 @@ module.exports = {
         } else {
           res.status(200).send({
             message: 'Logged succesfully.',
-            token: body.token
+            token: body.body.token
           });
         }
       }
